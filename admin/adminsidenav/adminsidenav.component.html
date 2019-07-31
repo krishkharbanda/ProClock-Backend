@@ -1,0 +1,37 @@
+<div class="sidebar-wrapper">
+  <nav class="navbar bg-default">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="'/admindashboard'"><i class="fa fa-dashboard"
+            style="font-size: 24px;padding-right: 9px;"></i>DASHBOARD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/admincompanies'" style="cursor: pointer;"><i class="fa fa-building-o"
+            style="font-size: 24px;padding-right: 9px;"></i>COMPANIES</a>
+      </li>
+      <!--  [routerLink]="'/admincompanies'" (click)="companyview()"-->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/employee'"><i class="fa fa-group"
+            style="font-size: 24px;padding-right: 9px;"></i>
+          EMPLOYEES</a>
+      </li>
+      <!-- (click)="employeeview()" -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/approval'"><i class="fa fa-check-square-o"
+            style="font-size: 24px;padding-right: 9px;"></i>APPROVALS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/changepassword'">
+            <i class="fa fa-lock" style="font-size: 24px;padding-right: 9px;"></i>
+            CHANGE PASSWORD
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link"><i class="fa fa-file" style="font-size: 24px;padding-right: 9px;"></i>REPORTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fa fa-cog" style="font-size: 24px;padding-right: 9px;"></i>SETTINGS</a>
+      </li> -->
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,71 @@
+<div class="container-fluid" style="margin-top: 24px; margin-bottom: 50px;">
+  <h4 style="color: #337ab7">Approvals Details</h4><br>
+  <mat-card>
+      <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <div class="col-md-9">
+            <!-- <span style="display: inline-flex !important">
+              <h5 style="color: #337ab7; margin-top: 3%"><strong>Approval</strong></h5>
+              <button type="button" style="height: 35px;margin-left: 10px" (click)="openDialog()"
+                class="btn btn-primary">
+                Add New
+              </button>
+          </span> -->
+           <!-- <i class="fa fa-plus" style="font-size:14px; padding-right: 9px"></i> -->
+          </div>
+          <div class="col-md-3 col-md-offset-0">
+            <div class="input-group mb-2 input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Search</span>
+              </div>
+              <input type="text" placeholder="search" [(ngModel)]="searchText" class="form-control" >
+            </div>
+          </div>
+        </mat-card-header>
+    <mat-card-content>
+      <div class="card">
+        <div class="card-body">
+          <!-- <div class="col-md-12" style="display: inline-flex;">
+            <div class="col-md-5">
+              <h4 class="card-title">Employees List</h4>
+            </div>
+            <div class="col-md-7">
+            </div>
+          </div> -->
+          <div class="card-text">
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm">
+                <thead class="table-active">
+                  <tr>
+                    <th>Approved By</th>
+                    <th>Approved Status</th>
+                    <th>Company Name</th>
+                    <th>Employee Name</th>
+                    <th>No Of Hours Worked</th>
+                    <th>Project Name</th>
+                    <th>Week</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let user of appservice.viewApprovalList | orderBy: descending | filter:searchText | paginate: {itemsPerPage:6, currentPage:p}; let i = index">
+                  <tr>
+                    <td>{{user.approvedBy}}</td>
+                    <td>{{user.approvedStatus}}</td>
+                    <td>{{user.companyName}}</td>
+                    <td>{{user.employeeName}}</td>
+                    <td>{{user.noOfHoursWorked}}</td>
+                    <td>{{user.projectName}}</td>
+                    <td>{{user.week}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              
+          <pagination-controls class="pagination justify-content-end" (pageChange)="p=$event" class="page-item">
+          </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

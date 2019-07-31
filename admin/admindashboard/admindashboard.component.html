@@ -1,0 +1,112 @@
+<mat-progress-bar *ngIf="progressBar" [mode]="'indeterminate'">
+  </mat-progress-bar>
+<div class="container-fluid">
+<mat-card style="margin-top: 20px;">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <div class="col-md-9">
+      <span style="display: inline-flex !important; color: #337ab7">
+        <h5><strong>Employee Status Report</strong></h5>
+      </span>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="input-group mb-2 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Search</span>
+        </div>
+        <input type="text" placeholder="search" [(ngModel)]="searchText" class="form-control">
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-text">
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="table-active">
+            <tr>
+              <th>Company Name</th>
+              <th>Employee Name</th>
+              <th>Joining Date</th>
+              <th>No. Of Weeks</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody
+            *ngFor="let elements of userstatus | orderBy: descending | filter:searchText | paginate: {itemsPerPage:4, currentPage:p}; let i = index">
+            <tr>
+              <td>{{elements.companyName}}</td>
+              <td>{{elements.employeeName}}</td>
+              <td>{{elements.joiningDate}}</td>
+              <td>{{elements.noOfWeeks}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" mat-raised-button
+                  (click)="userSubmit(elements)"> <i class="fa fa-pencil-square-o"
+                    style="font-size:18px"></i>Send Reminder
+                  </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls class="pagination justify-content-end" (pageChange)="p=$event" class="page-item">
+        </pagination-controls>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card style="margin-top: 20px;">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <div class="col-md-9">
+      <span style="display: inline-flex !important; color: #337ab7">
+        <h5><strong>Manager Status Report</strong></h5>
+      </span>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+      <div class="input-group mb-2 input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Search</span>
+        </div>
+        <input type="text" placeholder="search" [(ngModel)]="managersearchText" class="form-control">
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-text">
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="table-active">
+            <tr>
+              <th>Company Name</th>
+              <th>Manager Name</th>
+              <th>Employee Name</th>
+              <th>No. Of Weeks</th>
+              <th>Project Name</th>
+              <th>Vendor Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody
+            *ngFor="let element of managerstatus | orderBy: descending | filter:managersearchText | paginate: {itemsPerPage:4, currentPage:page}; let j = index">
+            <tr>
+              <td>{{element.companyName}}</td>
+              <td>{{element.managerName}}</td>
+              <td>{{element.employeeName}}</td>
+              <td>{{element.noOfWeeks}}</td>
+              <td>{{element.projectname}}</td>
+              <th>{{element.vendorName}}</th>
+              <td><button type="button" class="btn btn-danger" mat-raised-button
+                  (click)="managerSubmit(element)"> <i class="fa fa-pencil-square-o"
+                    style="font-size:18px"></i>Send Reminder</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls class="pagination justify-content-end" (pageChange)="page=$event" class="page-item">
+        </pagination-controls>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+</div>

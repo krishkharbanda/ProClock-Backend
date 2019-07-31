@@ -1,0 +1,79 @@
+<div class="container-fluid" style="margin-top: 24px; margin-bottom: 50px;">
+  <h4 style="color: #337ab7">Manager Details</h4><br>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="form-control-label col-sm-2" for="pwd" style="font-weight: 600;">Project Name :</label>
+      <label class="form-control-label col-sm-4">{{projectname}}</label>
+      <br>
+      <label class="form-control-label col-sm-2" for="pwd" style="font-weight: 600;">Start Date :</label>
+      <label class="form-control-label col-sm-4">{{projectstartDate | date:'mediumDate'}}</label>
+      <br>
+      <label class="form-control-label col-sm-2" for="pwd" style="font-weight: 600;">Duration :</label>
+      <label class="form-control-label col-sm-4">{{projectduration}}</label>
+    </div>
+  </form>
+
+  <mat-card>
+      <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <div class="col-md-9">
+            <span style="display: inline-flex !important">
+              <h5 style="color: #337ab7; margin-top: 3%"><strong>Managers</strong></h5>
+              <button type="button" style="height: 35px;margin-left: 10px;" (click)="openDialog()"
+                class="btn btn-primary">
+                <!-- <i class="fa fa-plus" style="font-size:14px; padding-right: 9px"></i> -->
+                Add New
+              </button>
+            </span>
+          </div>
+          <div class="col-md-3 col-md-offset-0">
+                  <div class="input-group mb-2 input-group-sm">
+                     <div class="input-group-prepend">
+                       <span class="input-group-text">Search</span>
+                    </div>
+                    <input type="text" placeholder="search" [(ngModel)]="searchText" class="form-control" >
+                  </div>
+              </div>
+        </mat-card-header>
+    <mat-card-content>
+      <div class="card-text">
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead class="table-active">
+              <tr>
+                <th>Manager Name</th>
+                <th>Project Vendor</th>
+                <th>Manager Email</th>
+                <th>Auth</th>
+                <th>Mail Confirmation</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let element of appservice.viewManagersList | orderBy: descending | filter:searchText | paginate: {itemsPerPage:6, currentPage:p}; let i = index">
+              <tr>
+                <td>{{element.managerName}}</td>
+                <td>{{element.project.projectVendor}}</td>
+                <td>{{element.managerEmail}}</td>
+                <!-- <td>{{element.auth}}</td> -->
+                <td *ngIf="element.auth==true">Requried</td>
+                <td *ngIf="element.auth==false">Not Requried</td>
+                <td *ngIf="element.enabled==true">Done</td>
+                <td *ngIf="element.enabled==false">Not Yet!</td>
+                <td>
+                  <button type="button" 
+                    style="height:32px; padding:0px 12px 0px 12px;" class="btn btn-info"
+                    (click)="managers(element);openEditDialog()">
+                    <!-- <i class="fa fa-pencil-square-o" style="font-size:18px"></i> -->
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls class="pagination justify-content-end" (pageChange)="p=$event" class="page-item">
+          </pagination-controls>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

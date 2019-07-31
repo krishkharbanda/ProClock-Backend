@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '.././node_modules/ngx-toastr/toastr.css';
+
+.navbar-default {
+    background-color: #f4f3ef;
+    border-bottom: 1px solid #DDDDDD;
+}
+.navbar-default .navbar-brand {
+    color: #777;
+}
+.navbar-default .navbar-nav > li > a:not(.btn) {
+    color: #9A9A9A;
+    font-weight: 600;
+}
+.bg-light {
+    background-color: #f4f3ef!important;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    text-align: center;
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button  {
+ 
+    color: #272727 !important;
+    background-color: #f4f3ef !important;
+  }
+
+  .ngx-pagination {
+    text-align: right;
+}
+
+
+.mat-raised-button {
+    min-width: 31px !important;
+    line-height: 25px !important;}
+    .ngx-pagination a, .ngx-pagination button {
+        background-color: #ececec;
+    }
+    .mat-card-header-text {
+        margin: 0 1px !important;
+    }
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: none; 
+    }
+
+    .mat-drawer-content{
+        height:auto !important;
+    }
+    .mat-dialog-content {
+        max-height: auto !important;
+    }
+    .mat-dialog-container {
+        height: auto !important;
+    }
+    thead[_ngcontent-c23] tr[_ngcontent-c23] td[_ngcontent-c23] {
+        color: #000;
+    }

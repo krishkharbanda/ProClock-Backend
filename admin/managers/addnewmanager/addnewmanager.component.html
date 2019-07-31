@@ -1,0 +1,64 @@
+<mat-progress-bar *ngIf="progressBar" [mode]="'indeterminate'">
+</mat-progress-bar>
+<h1 mat-dialog-title>Add New Manager</h1>
+<form name="addnewmanagerForm" #addnewmanagerForm="ngForm">
+  <!-- (ngSubmit)="OnSubmit(addnewmanagerForm)" -->
+  <div mat-dialog-content>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input required minlength="3" name="managerName" #managerName="ngModel" [(ngModel)]="addmanager.managerName"
+          class="form-control" pattern="^[a-zA-Z  ]*$" placeholder="Manager name" type="text">
+      </div>
+      <div *ngIf="managerName.invalid && (managerName.dirty || managerName.touched)" style="color:red">
+        <small *ngIf="managerName.errors.required">
+          This field is required.
+        </small>
+        <small *ngIf="managerName.errors.pattern">
+          Manager name is alphabetic character
+        </small>
+      </div>
+    </div>
+
+    <!-- form-group// -->
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input class="validate" name="managerEmail" #managerEmail="ngModel" [(ngModel)]="addmanager.managerEmail"
+          class="form-control" placeholder="Email address" type="email" required
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+      </div>
+      <div style="color:red" *ngIf="managerEmail.invalid && (managerEmail.dirty || managerEmail.touched)">
+        <small *ngIf="managerEmail.errors && managerEmail.errors.required">
+          Email is required
+        </small>
+        <small *ngIf="managerEmail.errors && managerEmail.errors.pattern">
+          Email is invalid
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+        </div>
+        <select class="form-control" #isAuth name="isAuth" [(ngModel)]="selectedOption" (change)="selectedauthId()" required>
+          <option [ngValue]="undefined" disabled> Select auth </option>
+          <option *ngFor="let authvalue of authValues" [ngValue]="authvalue">{{authvalue.user}}</option>
+        </select>
+      </div>
+      <div *ngIf="isAuth.invalid && (isAuth.dirty || isAuth.touched)" style="color:red">
+        <small *ngIf="isAuth.errors.required">
+          Please select the any Field.
+        </small>
+      </div>
+    </div>
+  </div>
+     <button class="btn btn-danger" [mat-dialog-close]="">Cancel</button>
+     <button class="btn btn-success" style="float: right" [disabled]='addnewmanagerForm.pristine || addnewmanagerForm.invalid' type="submit"
+        (click)="OnSubmit(addnewmanagerForm);">Save</button>
+</form>

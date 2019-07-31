@@ -1,0 +1,69 @@
+<mat-progress-bar *ngIf="progressBar" [mode]="'indeterminate'">
+</mat-progress-bar>
+<h1 mat-dialog-title>Update Manager</h1>
+<form #updateManagerform="ngForm" name="updateManagerform" (ngSubmit)="onSubmitUpdate(updateManagerform)">
+    <div mat-dialog-content>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input required name="managerName" #managerName="ngModel" [(ngModel)]="b"
+                  class="form-control" pattern="^[a-zA-Z  ]*$" placeholder="Manager name" type="text">
+            </div>
+            <div *ngIf="managerName.invalid && (managerName.dirty || managerName.touched)" style="color:red">
+                <small *ngIf="managerName.errors.required">
+                    Manager name is required.
+                </small>
+                <small *ngIf="managerName.errors.pattern">
+                    Manager name is alphabetic character
+                  </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input class="validate" name="managerEmail" #managerEmail="ngModel" [(ngModel)]="c" class="form-control"
+                    placeholder="Email address" type="email" required
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            </div>
+            <div style="color:red" *ngIf="managerEmail.invalid && (managerEmail.dirty || managerEmail.touched)">
+                <small *ngIf="managerEmail.errors && managerEmail.errors.required">
+                    Manager email is required
+                </small>
+                <small *ngIf="managerEmail.errors && managerEmail.errors.pattern">
+                    Manager email is invalid
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+                </div>
+                <select class="form-control" #isAuth name="isAuth" [(ngModel)]="selectedOption" (change)="selectedauthId()" required>
+                    <option [ngValue]="undefined" disabled>{{d}}</option>
+                    <option *ngFor="let authvalue of upadateauthValues" [ngValue]="authvalue">{{authvalue.user}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="isAuth.invalid && (isAuth.dirty || isAuth.touched)" style="color:red">
+                <small *ngIf="isAuth.errors.required">
+                    Please select the any Field.
+                </small>
+            </div>
+        </div>
+    </div>
+    <!-- <div mat-dialog-actions class="form-group">
+        <button mat-button (click)="updateClick();refresh()"
+            [disabled]='updateManagerform.pristine || updateManagerform.invalid' type="submit">Ok</button>
+        <button mat-button [mat-dialog-close]="">No Thanks</button>
+    </div> -->
+    <button class="btn btn-danger" [mat-dialog-close]="">Cancel</button>
+    <button class="btn btn-success" style="float: right" type="submit">Save</button>
+
+    <!-- [disabled]='updateManagerform.pristine || updateManagerform.invalid' -->
+
+</form>

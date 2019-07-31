@@ -1,0 +1,10 @@
+cdk-overlay-pane {
+    max-width: 80vw;
+    pointer-events: auto;
+    width: 50%;
+    position: static;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-height: 100%
+}

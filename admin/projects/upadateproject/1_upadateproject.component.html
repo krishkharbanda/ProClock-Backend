@@ -1,0 +1,98 @@
+<h1 mat-dialog-title>Update Project</h1>
+<form #updateProjectform="ngForm" name="updateProjectform" (ngSubmit)="onSubmitUpdate(updateProjectform)">
+    <div mat-dialog-content>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-tasks"></i> </span>
+                </div>
+                <input placeholder="projectName" class="validate" name="projectName" #projectName [(ngModel)]="b"
+                    class="form-control" type="text" required>
+            </div>
+            <div *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)" style="color:red">
+                <small *ngIf="projectName.errors.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-file-code-o"></i> </span>
+                </div>
+                <input placeholder="projectCode" class="validate" name="projectCode" #projectCode [(ngModel)]="f"
+                    class="form-control" type="text" required>
+            </div>
+            <div *ngIf="projectCode.invalid && (projectCode.dirty || projectCode.touched)" style="color:red">
+                <small *ngIf="c">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fas fa-store"></i> </span>
+                </div>
+                <input placeholder="projectVendor" class="validate" name="projectVendor" #projectVendor [(ngModel)]="e"
+                    class="form-control" type="text" required>
+            </div>
+            <div *ngIf="projectVendor.invalid && (projectVendor.dirty || projectVendor.touched)" style="color:red">
+                <small *ngIf="c">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                </div>
+                <input placeholder="projectStartDate" class="validate" name="projectStartDate" #projectStartDate
+                    [(ngModel)]="c" class="form-control" type="date" required>
+            </div>
+            <div *ngIf="projectStartDate.invalid && (projectStartDate.dirty || projectStartDate.touched)"
+                style="color:red">
+                <small *ngIf="c">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-clock-o"></i> </span>
+                </div>
+                <input placeholder="projectDuration" class="validate" name="projectDuration" #projectDuration
+                    [(ngModel)]="d" class="form-control" type="text" required>
+            </div>
+            <div *ngIf="projectDuration.invalid && (projectDuration.dirty || projectDuration.touched)"
+                style="color:red">
+                <small *ngIf="c">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+      
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-file-text"></i> </span>
+                </div>
+                <input placeholder="description" class="validate" name="description" #description [(ngModel)]="g"
+                    class="form-control" type="text" required>
+            </div>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" style="color:red">
+                <small *ngIf="c">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-danger" [mat-dialog-close]="">Cancel</button>
+    <button class="btn btn-success" style="float: right" (click)="updateClick()"
+            [disabled]='updateProjectform.pristine || updateProjectform.invalid' type="submit">Save</button>
+</form>

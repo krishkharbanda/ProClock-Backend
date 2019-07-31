@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "startDate": "10-Mar-2019",
+        "endDate": "16-Mar-2019",
+        "monday": 8,
+        "tuesday": 8,
+        "wednesday": 8,
+        "thursday": 8,
+        "friday": 8,
+        "saturday": 8,
+        "sunday": 8,
+        "userDetails": {
+            "userId": 3,
+            "firstName": "hari",
+            "lastName": "babu"
+        },
+        "refStatus": null,
+        "comments": null,
+        "approvedUserDetails": null,
+        "updatedDate": "2019-03-14T15:09:04.531+0000"
+    },
+    {
+        "id": 2,
+        "startDate": "10-Mar-2019",
+        "endDate": "16-Mar-2019",
+        "monday": 8,
+        "tuesday": 8,
+        "wednesday": 8,
+        "thursday": 8,
+        "friday": 8,
+        "saturday": 8,
+        "sunday": 8,
+        "userDetails": {
+            "userId": 3,
+            "firstName": "hari",
+            "lastName": "babu"
+        },
+        "refStatus": null,
+        "comments": null,
+        "approvedUserDetails": null,
+        "updatedDate": "2019-03-14T15:46:47.251+0000"
+    }
+]
